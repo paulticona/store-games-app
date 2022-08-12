@@ -1,4 +1,9 @@
-import {Box, Button, Typography, Link } from "@mui/material"
+import {Box, Button, Typography, Link, IconButton } from "@mui/material"
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import WhatsApp from "@mui/icons-material/WhatsApp";
 
 const Footer = ()=> {
     return (
@@ -32,12 +37,12 @@ const Footer = ()=> {
                 </Typography>
                 <Typography 
                     variant="body2"
-                    color="#566271"
+                    color="#8F98A0"
                 >
                     Inicia Sesion para ver recomendacione personalizadas
                 </Typography>
                 <Box><Button variant="contained" color="success">Iniciar sesión</Button></Box>
-                <Typography variant="body2" color="#566271">
+                <Typography variant="body2" color="#8F98A0">
                     o <Link href="#" color="#fff">registrate</Link> y unete a <strong>StoreGames</strong> de forma gratuita
                 </Typography>
             </Box>
@@ -46,8 +51,41 @@ const Footer = ()=> {
             sx={{
                 backgroundColor: '#171A21',
                 height: "50%",
+                padding: "20px 10px",
             }}
-            ></Box>
+            >
+                <Typography
+                color="#8F98A0"
+                >
+                <Box
+                sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                }}
+                >
+                    © 2022 StoreGames Corporation. Todos los derechos reservados. Todas las marcas registradas pertenecen a sus respectivos dueños en EE. UU. y otros países.
+                    Todos los precios incluyen IVA (donde sea aplicable)
+                    
+                       
+                        <Box>
+                            <IconButton color="success" href="https://www.facebook.com/">
+                                <FacebookIcon fontSize="large"/>
+                            </IconButton>
+                            <IconButton color="success" href="https://www.instagram.com/">
+                                <InstagramIcon fontSize="large"/>
+                            </IconButton>
+                            <IconButton color="success" href="https://www.whatsapp.com/?lang=es">
+                                <WhatsAppIcon fontSize="large"/>
+                            </IconButton>
+                            <IconButton color="success" href='https://twitter.com/'>
+                                <TwitterIcon fontSize="large"/>
+                            </IconButton>
+                        </Box>
+                    
+                </Box>
+                </Typography>
+            </Box>
         </Box>
     )
 

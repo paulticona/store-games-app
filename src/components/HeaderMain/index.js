@@ -61,7 +61,6 @@ const HerderMain =()=> {
           label="Buscar..." 
           variant="outlined" 
           size="small"
-          color='secondary'
           sx={{ 
             width: '30%',
           }}

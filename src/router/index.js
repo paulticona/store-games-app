@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import {MainView} from "../pages";
+import {MainView, LoginView, RegisterView} from "../pages";
 import {SearchResultsView} from "../components"
 
 const Router = () => {
@@ -8,6 +8,9 @@ const Router = () => {
 			<Routes>
 				<Route path="/" element={<MainView />} />
 				<Route path="/" element={<SearchResultsView/>} />
+				<Route path="/login" element={<LoginView/>} />
+				<Route path="/Register" element={<RegisterView/>} />
+
 			</Routes>
 		</BrowserRouter>
 	);
