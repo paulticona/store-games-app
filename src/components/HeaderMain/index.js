@@ -21,7 +21,7 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
     minHeight: 128,
   },
 }));
-function ProminentAppBar() {
+const HerderMain =()=> {
 
   const [searchText, setSearchText] = useState("")
   const history = useNavigate()
@@ -32,7 +32,7 @@ function ProminentAppBar() {
 
   function searchButton(){
     if(searchText === "") return
-    history(`/search/${searchText}`)
+    history(`/${searchText}`)
   }
 
   return (
@@ -90,4 +90,4 @@ function ProminentAppBar() {
   );
 }
 
-export default ProminentAppBar
+export default HerderMain

@@ -1,21 +1,19 @@
-import { Container } from "@mui/system";
-import { useEffect } from "react";
-import { ProminentAppBar } from "../../components";
-import  Services  from "../../services";
+
+import { Box } from "@mui/material";
+import { HeaderMain, Footer } from "../../components";
+
 const Main = () => {
-    async function getGamesResult() {
-        const games = Services.getGames();
-        console.log(games);
-    }
-
-    useEffect(() => {
-        getGamesResult()
-    }, [])
-    
-
 	return (
-        
-        <ProminentAppBar/>
+        <Box sx={{
+            height: '100vh',
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+        }}>
+            <HeaderMain/>
+            
+            <Footer/>
+        </Box>
 	);
 };
 

@@ -1,12 +1,12 @@
 import {config} from './config'
 
-export const getGames = async()=>{
+export const getGames = async(searchText)=>{
     try {
-        const url = config.baseUrl
+        const url = config.baseUrl + "?s=" + searchText
         
         const response = await fetch(url)
         const data = await response.json()
-        console.log(data)
+       // console.log(data)
         return data
     } catch (error) {
         return error.message;
