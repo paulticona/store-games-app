@@ -26,10 +26,13 @@ const Cards = ({ game }) => {
         },
       });
   return (
-        <Grid item xs={12} md={4} my={3}>
+    <Grid item xs={2} sm={4} md={4}
+      
+    >
       <Card
         sx={{
           height: 450,
+          backgroundColor:'#3E7694'
         }}
       >
         <CardMedia
@@ -53,12 +56,12 @@ const Cards = ({ game }) => {
                 {game.title}
               </Typography>
               <Typography variant="body1">{game.release_date}</Typography>
-              <Typography color="#f01" variant="h6">
+              <Typography color="#fff3e0" variant="h6">
                 $ {game.id}
               </Typography>
               <Chip
                 label={game.platform}
-                color="success"
+                color="primary"
                 size="small"
                 variant="outlined"
               />
