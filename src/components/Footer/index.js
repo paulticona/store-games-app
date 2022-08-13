@@ -5,12 +5,12 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import WhatsApp from "@mui/icons-material/WhatsApp";
 
-const Footer = ()=> {
+const FooterView = ()=> {
     return (
         <Box
         sx={{
     
-            height: "30vh",
+            height: "50vh",
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
@@ -29,6 +29,7 @@ const Footer = ()=> {
                 backgroundColor: 'black',              
             }}
             >
+
                 <Typography
                 variant="h5"
                 color="#4fc3f7"
@@ -41,9 +42,14 @@ const Footer = ()=> {
                 >
                     Inicia Sesion para ver recomendacione personalizadas
                 </Typography>
-                <Box><Button variant="contained" color="success">Iniciar sesión</Button></Box>
+                <Box>
+                    <Button variant="contained" color="success" href='/Login'>
+                        Iniciar sesión
+                    </Button>
+                </Box>
                 <Typography variant="body2" color="#8F98A0">
-                    o <Link href="#" color="#fff">registrate</Link> y unete a <strong>StoreGames</strong> de forma gratuita
+                    o <Link href="/Register" color="#fff">registrate</Link> 
+                    y unete a <strong>StoreGames</strong> de forma gratuita
                 </Typography>
             </Box>
 
@@ -54,18 +60,20 @@ const Footer = ()=> {
                 padding: "20px 10px",
             }}
             >
-                <Typography
-                color="#8F98A0"
-                >
+                
                 <Box
                 sx={{
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
                 }}
+                ><Typography
+                color="#8F98A0"
                 >
-                    © 2022 StoreGames Corporation. Todos los derechos reservados. Todas las marcas registradas pertenecen a sus respectivos dueños en EE. UU. y otros países.
-                    Todos los precios incluyen IVA (donde sea aplicable)
+                    
+                        © 2022 StoreGames Corporation. Todos los derechos reservados. Todas las marcas registradas pertenecen a sus respectivos dueños en EE. UU. y otros países.
+                        Todos los precios incluyen IVA (donde sea aplicable)
+                </Typography>
                     
                        
                         <Box>
@@ -84,11 +92,10 @@ const Footer = ()=> {
                         </Box>
                     
                 </Box>
-                </Typography>
             </Box>
         </Box>
     )
 
 }
 
-export default Footer
+export default FooterView

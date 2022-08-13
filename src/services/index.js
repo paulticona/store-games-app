@@ -1,22 +1,19 @@
-import {config} from './config'
+import config from "./config.js";
 
-export const getGames = async(searchText)=>{
-    try {
-        const url = config.baseUrl + "?s=" + searchText
-        
-        const response = await fetch(url)
-        const data = await response.json()
-       // console.log(data)
-        return data
-    } catch (error) {
-        return error.message;
-    }
+const getGames = async () => {
+	try {
+		const url =config.baseUrl
+		const response = await fetch(url);
+		const data = await response.json();
+		return data
+	} catch (error) {
+		return error;
+	}
+};
 
-    
-}
 const Services = {
-    getGames,
-}
+	getGames
+};
 
-export default Services
+export default Services;
 

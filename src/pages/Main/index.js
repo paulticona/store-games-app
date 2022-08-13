@@ -1,6 +1,6 @@
 
 import { Box } from "@mui/material";
-import { HeaderMain, Footer } from "../../components";
+import { HeaderMain, FooterView, BodyGamesView } from "../../components";
 
 const Main = () => {
 	return (
@@ -11,8 +11,8 @@ const Main = () => {
             justifyContent: "space-between",
         }}>
             <HeaderMain/>
-            
-            <Footer/>
+            <BodyGamesView/>
+            <FooterView/>
         </Box>
 	);
 };
