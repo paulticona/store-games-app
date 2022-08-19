@@ -73,7 +73,9 @@ const HerderMain =({text, outClick})=> {
               
             />
           </IconButton>
-          <IconButton>
+          <IconButton
+            onClick={outClick}
+          >
             <LogoutIcon
               sx={{
                 marginTop:"4px",

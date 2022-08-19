@@ -16,7 +16,7 @@ const Main = () => {
             justifyContent: "space-between",
             backgroundColor: '#121212'
         }}>
-            <HeaderMain text='Paul' outClick={logOut} />
+            
             <BodyGamesView/>
             <FooterView/>
         </Box>
