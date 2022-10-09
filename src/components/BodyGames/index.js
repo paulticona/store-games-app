@@ -1,8 +1,53 @@
 import { useEffect, useState } from "react";
 import Services from "../../services";
 import Cards from "../CardGames";
-import { Container, Grid, Box, Card, TextField, IconButton } from "@mui/material";
+import { Grid, Box, Typography} from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
+
+// Logoca para los estilos del buscador
+import InputBase from '@mui/material/InputBase';
+import { styled, alpha } from '@mui/material/styles';
+const Search = styled('div')(({ theme }) => ({
+  position: 'relative',
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  '&:hover': {
+    backgroundColor: alpha(theme.palette.common.white, 0.25),
+  },
+  marginLeft: 0,
+  width: '100%',
+  [theme.breakpoints.up('sm')]: {
+    marginLeft: theme.spacing(1),
+    width: 'auto',
+  },
+}));
+
+const SearchIconWrapper = styled('div')(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: '100%',
+  position: 'absolute',
+  pointerEvents: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: 'inherit',
+  '& .MuiInputBase-input': {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      width: '12ch',
+      '&:focus': {
+        width: '20ch',
+      },
+    },
+  },
+}));
 
 const BodyGamesView = () => {
   //LOS ALMACENAMOS EN EL ESTADO DE LA APLICACION
@@ -38,61 +83,21 @@ const BodyGamesView = () => {
   }, []);
 
   return (
-    <Box
-    >
-
-      <Container
-        maxWidth="sm"
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          margin: '50px',
-
-        }}
-      >
-        <Card
-          sx={{
-            alignItems: 'center',
-            maxWidth: 'auto',
-            padding: '5px',
-            backgroundColor: '#9e9e9e'
-          }}
-        >
-          <Box>
-            <TextField
-                value={search}
-                onChange={searchInput}
-                id="outlined-basic"
-                label="Buscar..."
-                variant="outlined"
-                size="small"
-                sx={{
-                    width: '90%',
-                    marginTop: '5px',
-                }}
-                //recibimos funcion pra obtener valore del texfield
-            />
-            <IconButton
-                size="large"
-                aria-label="search"
-                color="inherit"
-            >
-            <SearchIcon />
-            </IconButton>
-        </Box>
-          
-        </Card>
-      </Container>
+    <Box>
+      
+     
+      
       <Grid
         sx={{
           display: 'flex',
           justifyContent: 'center',
+          
         }}
         container
-        maxWidth="sm lg"
-        spacing={{ xs: 2, md: 5 }}
-        columns={{ xs: 4, sm: 12, md: 18 }}
+        maxWidth="xs sm lg"
+        spacing={{ xs: 3, sm: 3, md:3, lg:3, xl:3 }}
+        columns={{ xs: 0,  sm: 8, md:12, lg: 18, xl: 22}}
+      
       >
       
         {result.length > 0 ? (
