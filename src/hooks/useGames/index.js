@@ -1,19 +1,17 @@
 import { useState, useEffect } from "react"
-import Services from "../services"
+import Services from "../../services/index"
 
 export const useGames=() =>{
     const [isLoading, setIsLoading] = useState(true)
     const [games, setGames] = useState([])
 
-    async function getSearchResult() {
-        const data = await Services.getGames();
-        //CARGAMOS LA DATA DE juego
-        setIsLoading(false)
-        setGames(data);
-      }
-
     useEffect(() => {
-        getSearchResult();
+        //carga de los juegos
+        Services.getGames()
+            .then(games =>{
+                setIsLoading(false)
+                setGames(games)
+            })
     },[])
 
     return {
