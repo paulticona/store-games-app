@@ -3,7 +3,6 @@ import { styled } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import ResponsiveAppBar from '../AppBar/index'
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   alignItems: 'flex-start',
@@ -16,11 +15,8 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 }));
 
 const HerderMain =({text, outClick})=> {
-
-
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <ResponsiveAppBar></ResponsiveAppBar>
       <AppBar position="static">
         <StyledToolbar>
          

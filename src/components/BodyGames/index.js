@@ -1,92 +1,51 @@
-import { useEffect, useState } from "react";
-import Services from "../../services";
+import { useState } from "react";
+
 import Cards from "../CardGames";
-import { Grid, Box, Typography} from "@mui/material";
-import SearchIcon from '@mui/icons-material/Search';
+import { Grid, Box, Button, Stack} from "@mui/material";
+import HeaderMain  from "../HeaderMain/index";
+import ResponsiveAppBar from "../AppBar/index";
+import { Loading } from "../Loads/Loading";
 
-// Logoca para los estilos del buscador
-import InputBase from '@mui/material/InputBase';
-import { styled, alpha } from '@mui/material/styles';
-const Search = styled('div')(({ theme }) => ({
-  position: 'relative',
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  '&:hover': {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginLeft: 0,
-  width: '100%',
-  [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(1),
-    width: 'auto',
-  },
-}));
 
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-}));
+import { useGames } from "../../hooks/useGames";
 
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'inherit',
-  '& .MuiInputBase-input': {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: '12ch',
-      '&:focus': {
-        width: '20ch',
-      },
-    },
-  },
-}));
 
 const BodyGamesView = () => {
-  //LOS ALMACENAMOS EN EL ESTADO DE LA APLICACION
-  //EN ESTE CASO CARDGAMES
-  const [search, setSeach] = useState("");
-  const [games, setGames] = useState([]);
+  
+  //traemos nuestro hook useGames()
+  const {isLoading, games} = useGames()
+  const [currentPage, setCurrentPage] = useState(0)
+  // const [search, setSeach] = useState("");
 
-  //TRAEMOS LA DATA CONS ESTA FUNCION
-  async function getSearchResult() {
-    const data = await Services.getGames();
-    //CARGAMOS LA DATA
-    setGames(data);
+  console.log(games)
+  const filteredGames = ()=> {
+    return games.slice(currentPage, currentPage + 5)
   }
 
-  //capturamos teclado
-  const searchInput= (e) => {
-    setSeach(e.target.value);
-    console.log(e.target.value);
+  const nextPage =()=>{
+    setCurrentPage(currentPage + 5)
   }
-
+  const prevPage =()=>{
+    if (currentPage > 0) {
+      setCurrentPage(currentPage - 5)
+    }
+    
+  }
+  
   //Filtramos
-  let result = []
-  if (search === '') {
-      result = games
-  } else {
-      result = games.filter((data) =>
-        data.title.toLowerCase().includes(search.toLowerCase())
-      )
-  }
-
-  useEffect(() => {
-    getSearchResult();
-  }, []);
+  // let result = []
+  // if (search === '') {
+  //     result = games
+  // } else {
+  //     result = games.filter((data) =>
+  //       data.title.toLowerCase().includes(search.toLowerCase())
+  //     )
+  // }
 
   return (
     <Box>
-      
-     
-      
+      <ResponsiveAppBar/>   
+      <HeaderMain/>
       <Grid
         sx={{
           display: 'flex',
@@ -97,15 +56,39 @@ const BodyGamesView = () => {
         maxWidth="xs sm lg"
         spacing={{ xs: 3, sm: 3, md:3, lg:3, xl:3 }}
         columns={{ xs: 0,  sm: 8, md:12, lg: 18, xl: 22}}
-      
       >
-      
-        {result.length > 0 ? (
-          result.map((game, index) => <Cards game={game} key={index} />)
+        {filteredGames().length > 0 ? (
+          filteredGames().map((game, index) => <Cards game={game} key={index} />)
         ) : (
           <h4>not Found</h4>
         )}
       </Grid>
+      <Stack 
+        spacing={2} 
+        direction="row" 
+        style={{
+          display: 'flex',
+          justifyContent: 'space-around',
+          margin: '20px'
+        }}>
+        {
+          
+        }
+        <Button 
+          variant="contained"
+          onClick={prevPage}
+          >
+          Anterior</Button>
+
+        <Button 
+          variant='contained'
+          onClick={nextPage}
+          >
+            Siguiente</Button>
+      </Stack>
+      {
+        isLoading && <Loading/>
+      }
     </Box>
   );
 };
