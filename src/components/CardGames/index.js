@@ -8,13 +8,11 @@ import {
   Chip,
   Rating,
   Stack,
-  Box,
-  Avatar,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import BodyGamesView from "../BodyGames";
+
 
 const Cards = ({ game }) => {
     const StyledRating = styled(Rating)({
