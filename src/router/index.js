@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { ResponsiveAppBar } from "../components";
-import HerderMain from "../components/HeaderMain";
+import { FooterView, ResponsiveAppBar } from "../components";
 import {MainView, LoginView, RegisterView} from "../pages";
 import { Explore } from "../pages";
 import { Categoria } from "../pages/Categorias";
@@ -26,6 +25,7 @@ const Router = () => {
 					<Route path="/perfil" element={<Perfil/>} />
 				</Routes>
 			</BrowserRouter>
+			<FooterView/>
 		</>
 	);
 };

@@ -8,15 +8,10 @@ import { Grid, Box, Button, Stack} from "@mui/material";
 import { Loading } from "../Loads/Loading";
 
 import { useGames } from "../../hooks/useGames";
+import GamesFavorites  from "../Favorites";
 
 
 const BodyGamesView = () => {
-
-  
-
-  
-
-  
   //traemos nuestro hook useGames()
   const {isLoading, games} = useGames()
   //variables de estado variable
@@ -56,7 +51,9 @@ const BodyGamesView = () => {
   return (
     <Box>
       <Box
-        sx={{padding:5}}
+        sx={{
+          padding:5
+        }}
       >
       <TextField 
           id="outlined-search" 
@@ -117,6 +114,9 @@ const BodyGamesView = () => {
       {
         isLoading && <Loading/>
       }
+
+      <GamesFavorites/>
+
     </Box>
   );
 };

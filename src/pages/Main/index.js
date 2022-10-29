@@ -1,6 +1,6 @@
 
 import { Box } from "@mui/material";
-import { HeaderMain, FooterView, BodyGamesView, ResponsiveAppBar } from "../../components";
+import { BodyGamesView } from "../../components";
 
 const Main = () => {
 
@@ -12,9 +12,8 @@ const Main = () => {
             flexDirection: "column",
             justifyContent: "space-between",
             backgroundColor: '#121212'
-        }}>
+        }}> 
             <BodyGamesView/>
-            <FooterView/>
         </Box>
 	);
 };

@@ -4,17 +4,48 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import GoogleIcon from '@mui/icons-material/Google';
 import {Box, Button, Container, Grid, Link, TextField, Typography } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import theme from '../../theme';
+import { useState} from 'react';
+import { SignIn } from '../../services/AuthServices';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const data = new FormData(e.currentTarget);
+  //   console.log({
+  //     email: data.get("email"),
+  //     password: data.get("password"),
+  //   });
+  // }
+  const [userCredentials, setUserCredentials] = useState({
+    // aqui capturamos los dos valores
+    username: "",
+    password: "",
+  });
+
+  //instancia del useNavigate
+  const navigate= useNavigate()
+  //capturamos los campos
+  const handleInputChange = (e)=>{
+    const {name, value}= e.currentTarget
+    setUserCredentials({
+      ...userCredentials,
+      [name]:value
+    })
+  }
+
+  //creamos usuario
+  const createUser = async(e)=>{
+    e.preventDefault()
+    const response = await SignIn(userCredentials)
+    if(response.status===200){
+      //enviamos al LocalStorage el Token
+      localStorage.setItem('token', response.data.access_token)
+      navigate('/')
+      
+    }else{
+      alert('Usuario o Password incorrectos')
+    }
   }
 
   return (
@@ -42,7 +73,7 @@ const Login = () => {
     
 
           <form
-            onSubmit={handleSubmit}
+            onSubmit={createUser}
           >
             <Box sx={{ my: 3 }}>
               <Typography
@@ -100,6 +131,11 @@ const Login = () => {
                 pt: 3
               }}
             >
+
+
+
+
+
               <Typography
                 align="center"
                 color="textSecondary"
@@ -108,26 +144,33 @@ const Login = () => {
                 o iniciar sesión con la dirección de correo electrónico
               </Typography>
             </Box>
+
+
             <TextField
-              
               fullWidth
-              
-              label="Email Address"
+              label="Username"
               margin="normal"
-              name="email"
-              
-              type="email"
-             
+              type="text"
               variant="outlined"
+              id='username'
+              name="username"
+              value={userCredentials.username}
+              onChange={handleInputChange}
             />
+
             <TextField
               fullWidth
               label="Password"
               margin="normal"
-              name="password"
               type="password"
               variant="outlined"
+              id='password'
+              name="password"
+              value={userCredentials.password}
+              onChange={handleInputChange}
             />
+
+
             <Box sx={{ py: 2 }}>
               <Button
                 color="primary"

@@ -189,7 +189,11 @@ import {Box, Button} from "@mui/material";
               >
                 {settings.map((setting) => (
                   <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
+                    <Typography 
+                      textAlign="center"
+                      >
+                      {setting}
+                    </Typography>
                   </MenuItem>
                 ))}
               </Menu>
